@@ -9,6 +9,7 @@ import 'package:autobin/mech/customWidgets.dart';
 import 'package:autobin/mech/screensize.dart';
 import 'package:autobin/models/bin_model.dart';
 import 'package:autobin/screens/home/bin-details.dart';
+import 'package:autobin/screens/home/scan_bin_qr.dart';
 
 class DashBoard extends StatefulWidget {
   @override
@@ -87,14 +88,24 @@ class _DashBoardState extends State<DashBoard> {
                     lastPickup: _pickedTime),
               ),
               SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, left: 30, bottom: 0),
-                child: Text("Bins Owned",
-                    style: TextStyle(
-                        fontSize: 21,
-                        fontWeight: FontWeight.w600,
-                        color: fHeader)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, left: 30, bottom: 0),
+                    child: Text("Bins Owned",
+                        style: TextStyle(
+                            fontSize: 21,
+                            fontWeight: FontWeight.w600,
+                            color: fHeader)),
+                  ),
+                  TextButton(
+                    child: Text("Add Bin"),
+                    onPressed: () => { _addBin() },
+                  ),
+                ],
               ),
+
               _binListBuilder()
             ],
           ),
@@ -160,6 +171,15 @@ class _DashBoardState extends State<DashBoard> {
               ),
             ));
       },
+    );
+  }
+
+  _addBin() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ScanBinQR()
+      )
     );
   }
 
