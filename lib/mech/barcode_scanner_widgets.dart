@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class AnalyzeImageFromGalleryButton extends StatelessWidget {
@@ -14,21 +14,19 @@ class AnalyzeImageFromGalleryButton extends StatelessWidget {
       icon: const Icon(Icons.image),
       iconSize: 32.0,
       onPressed: () async {
-        // final ImagePicker picker = ImagePicker();
-        //
-        // final XFile? image = await picker.pickImage(
-        //   source: ImageSource.gallery,
-        // );
-        //
-        // if (image == null) {
-        //   return;
-        // }
+        final ImagePicker picker = ImagePicker();
 
-        // final BarcodeCapture? barcodes = await controller.analyzeImage(
-        //   image.path,
-        // );
-        var barcodes = [];
+        final XFile? image = await picker.pickImage(
+          source: ImageSource.gallery,
+        );
 
+        if (image == null) {
+          return;
+        }
+
+        final BarcodeCapture? barcodes = await controller.analyzeImage(
+          image.path,
+        );
 
         if (!context.mounted) {
           return;

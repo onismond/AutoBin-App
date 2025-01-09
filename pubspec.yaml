@@ -37,14 +37,16 @@ dependencies:
   cupertino_icons: ^1.0.8
   dio: ^5.7.0
   flutter_spinkit: ^5.2.1
+  flutter_easyloading: ^3.0.5
   form_field_validator: ^1.1.0
   timeago: ^3.7.0
   fancy_bottom_navigation: ^0.3.3
   liquid_progress_indicator_v2: ^0.5.0
   mobile_scanner: ^6.0.2
-#  image_picker: ^1.0.4
-#  ai_barcode_scanner: ^5.2.2
-#  shared_preferences: ^2.2.3
+  image_picker: ^1.0.4
+  shared_preferences: ^2.2.3
+  google_maps_flutter: ^2.10.0
+
 
 dev_dependencies:
   flutter_test:

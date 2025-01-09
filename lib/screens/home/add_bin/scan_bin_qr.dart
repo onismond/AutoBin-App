@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:autobin/screens/home/add_bin.dart';
+import 'package:autobin/screens/home/add_bin/add_bin.dart';
 import 'package:autobin/mech/barcode_scanner_widgets.dart';
+
 
 class ScanBinQR extends StatefulWidget {
   const ScanBinQR({super.key});
@@ -11,9 +12,16 @@ class ScanBinQR extends StatefulWidget {
 }
 
 class _ScanBinQRState extends State<ScanBinQR> {
+  String? qrValue;
+
   final MobileScannerController controller = MobileScannerController(
     formats: const [BarcodeFormat.qrCode],
   );
+
+  @override void dispose() async{
+    await controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,16 +77,17 @@ class _ScanBinQRState extends State<ScanBinQR> {
               },
               onDetect: (capture) {
                 final List<Barcode> barcodes = capture.barcodes;
-                String? qrValue = barcodes.first.rawValue;
-                if (qrValue != null) {
-                  Navigator.push(
+                if (qrValue == null && barcodes.isNotEmpty) {
+                  qrValue = barcodes.first.rawValue;
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => AddBin(qrValue: qrValue)
+                        builder: (context) => AddBin(qrValue: qrValue!)
                     ),
                   );
                 }
               },
+
             ),
           ),
           ValueListenableBuilder(

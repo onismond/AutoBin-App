@@ -9,7 +9,7 @@ import 'package:autobin/mech/customWidgets.dart';
 import 'package:autobin/mech/screensize.dart';
 import 'package:autobin/models/bin_model.dart';
 import 'package:autobin/screens/home/bin-details.dart';
-import 'package:autobin/screens/home/scan_bin_qr.dart';
+import 'package:autobin/screens/home/add_bin/scan_bin_qr.dart';
 
 class DashBoard extends StatefulWidget {
   @override

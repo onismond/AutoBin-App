@@ -8,41 +8,13 @@ class APIController {
   late Options _options;
 
   // api url
-  final String _url = "http://192.168.126.159:80/api/v1";
+  final String _url = "http://192.168.174.159:80/api/v1";
 
   // id of the logged in user
   late int _userId;
 
   APIController() {
     _dio = new Dio();
-  }
-
-  // login method
-  Future<Response<dynamic>> login({String? email, var password}) async {
-    return await _dio.post("$_url/user/login/",
-        data: {"email": email, "password": password});
-  }
-
-  // register method
-  Future<Response<dynamic>> register(
-      {String? title,
-      String? firstName,
-      String? lastName,
-      String? otherName,
-      String? telephone,
-      String? address,
-      String? email,
-      var password}) async {
-    return await _dio.post("$_url/user/register/", data: {
-      "title": title,
-      "first_name": firstName,
-      "last_name": lastName,
-      "other_name": otherName,
-      "telephone": telephone,
-      "address": address,
-      "email": email,
-      "password": password
-    });
   }
 
   // decodes data from string to json (Map)
@@ -86,9 +58,37 @@ class APIController {
     // _userId = await PrefController.getId();
     String token = "";
     _userId = 1;
-
     // assign token
     _options = Options(headers: {"Authorization": "Bearer $token"});
+  }
+
+
+  // login method
+  Future<Response<dynamic>> login({String? email, var password}) async {
+    return await _dio.post("$_url/user/login/",
+        data: {"email": email, "password": password});
+  }
+
+  // register method
+  Future<Response<dynamic>> register(
+      {String? title,
+        String? firstName,
+        String? lastName,
+        String? otherName,
+        String? telephone,
+        String? address,
+        String? email,
+        var password}) async {
+    return await _dio.post("$_url/user/register/", data: {
+      "title": title,
+      "first_name": firstName,
+      "last_name": lastName,
+      "other_name": otherName,
+      "telephone": telephone,
+      "address": address,
+      "email": email,
+      "password": password
+    });
   }
 
   // retrieve owner's bins
@@ -103,5 +103,21 @@ class APIController {
   Future<Response<dynamic>> orderPickup({required int binID}) async {
     return await _dio
         .post("$_url/bin/order-pickup/", data: {"bin_id": binID});
+  }
+
+  Future<Response<dynamic>> addBin({
+    required String qrValue,
+    required String binName,
+    required String binColor,
+    required String latitude,
+    required String longitude,
+  }) async {
+    return await _dio.post("$_url/bin/add/", data: {
+      'qr_value': qrValue,
+      'bin_name': binName,
+      'bin_color': binColor,
+      'latitude': latitude,
+      'longitude': longitude,
+    });
   }
 }
