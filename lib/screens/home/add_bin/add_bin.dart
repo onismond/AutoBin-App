@@ -38,84 +38,86 @@ class _AddBinState extends State<AddBin> {
         title: const Text('Bin Details'),
       ),
       body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  "Bin ID: ",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: fHeader,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    "Bin ID: ",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: fHeader,
+                    ),
                   ),
-                ),
-                SizedBox(height: 5),
-                TextFormField(
-                  enabled: false,
-                  decoration: customInput.copyWith(
-                      hintText: qrValue
+                  SizedBox(height: 5),
+                  TextFormField(
+                    enabled: false,
+                    decoration: customInput.copyWith(
+                        hintText: qrValue
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Bin Name",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: fHeader,
+                  SizedBox(height: 20),
+                  Text(
+                    "Bin Name",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: fHeader,
+                    ),
                   ),
-                ),
-                SizedBox(height: 5,),
-                TextFormField(
-                  decoration: customInput.copyWith(
-                    hintText: "Enter Bin Name"
+                  SizedBox(height: 5,),
+                  TextFormField(
+                    decoration: customInput.copyWith(
+                      hintText: "Enter Bin Name"
+                    ),
+                    onChanged: (newValue) => binName = newValue,
                   ),
-                  onChanged: (newValue) => binName = newValue,
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Bin Color",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: fHeader,
+                  SizedBox(height: 20),
+                  Text(
+                    "Bin Color",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: fHeader,
+                    ),
                   ),
-                ),
-                SizedBox(height: 5,),
-                DropdownButtonFormField(
-                  decoration: customInput.copyWith(),
-                  hint: Text('Select the color of your bin'),
-                  items: colors.entries.map((entry) {
-                    return DropdownMenuItem(
-                      value: entry.key,
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            color: entry.value,
-                            margin: EdgeInsets.only(right: 10),
-                          ),
-                          Text(entry.key),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                    onChanged: (String? newColor) {
-                      setState(() {
-                        binColor = newColor;
-                      });
-                    }
-                ),
-                SizedBox(height: 60,),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: bColor1,
-                    foregroundColor: Colors.deepPurple
+                  SizedBox(height: 5,),
+                  DropdownButtonFormField(
+                    decoration: customInput.copyWith(),
+                    hint: Text('Select the color of your bin'),
+                    items: colors.entries.map((entry) {
+                      return DropdownMenuItem(
+                        value: entry.key,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 20,
+                              height: 20,
+                              color: entry.value,
+                              margin: EdgeInsets.only(right: 10),
+                            ),
+                            Text(entry.key),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                      onChanged: (String? newColor) {
+                        setState(() {
+                          binColor = newColor;
+                        });
+                      }
                   ),
-                  onPressed: () => pickLocation(),
-                  child: Text('Next'),
-                )
-              ],
+                  SizedBox(height: 60,),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: bColor1,
+                      foregroundColor: Colors.deepPurple
+                    ),
+                    onPressed: () => pickLocation(),
+                    child: Text('Next'),
+                  )
+                ],
+              ),
             ),
           )
       )

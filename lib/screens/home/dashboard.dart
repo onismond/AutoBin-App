@@ -197,12 +197,11 @@ class _DashBoardState extends State<DashBoard> {
 
       //get the bin list with map data
       List binData = APIController.decodeListData(response);
-      print(binData);
 
       //convert the bin data map to model
-      binData.forEach((bin) {
+      for (var bin in binData) {
         binList.add(Bin.fromMap(bin));
-      });
+      }
 
       setState(() {
         _isProcessing = false;

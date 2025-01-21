@@ -8,7 +8,7 @@ class APIController {
   late Options _options;
 
   // api url
-  final String _url = "http://192.168.174.159:80/api/v1";
+  final String _url = "https://autobin-ucc-40b2bf6f03bc.herokuapp.com/api/v1";
 
   // id of the logged in user
   late int _userId;
@@ -36,9 +36,9 @@ class APIController {
   static errorMessage(DioException e, BuildContext context) {
     print(e.response?.data);
     String message = e.response != null
-        ? e.response?.data['error']
+        ? e.response?.data
         : "No connectivity. Please check your internet connection and try again.";
-    int statusCode = e.response != null ? e.response?.data['code'] : 0;
+    int statusCode = e.response != null ? 0 : 0;
 
     // if response code is unauthenticated or unauthorized
     bool isUnauthorizedOrUnAuthenticated =
@@ -118,6 +118,14 @@ class APIController {
       'bin_color': binColor,
       'latitude': latitude,
       'longitude': longitude,
+    });
+  }
+
+  Future<Response<dynamic>> binDetails({
+    required String binId,
+  }) async {
+    return await _dio.post("$_url/bin/detail/", data: {
+      'bin_id': binId,
     });
   }
 }

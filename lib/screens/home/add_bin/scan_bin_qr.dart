@@ -36,25 +36,6 @@ class _ScanBinQRState extends State<ScanBinQR> {
       appBar: AppBar(
         title: const Text('Scan Bin QR Code'),
       ),
-      // body: MobileScanner(
-      //   controller: MobileScannerController(
-      //     detectionSpeed: DetectionSpeed.noDuplicates,
-      //     returnImage: false,
-      //   ),
-      //   onDetect: (capture) {
-      //     final List<Barcode> barcodes = capture.barcodes;
-      //     String? qrValue = barcodes.first.rawValue;
-      //     if (qrValue != null) {
-      //       Navigator.push(
-      //         context,
-      //         MaterialPageRoute(
-      //             builder: (context) => AddBin(qrValue: qrValue)
-      //         ),
-      //       );
-      //     }
-      //   },
-      // ),
-
       body: Stack(
         fit: StackFit.expand,
         children: [

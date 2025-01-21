@@ -38,6 +38,7 @@ dependencies:
   dio: ^5.7.0
   flutter_spinkit: ^5.2.1
   flutter_easyloading: ^3.0.5
+  pull_to_refresh_flutter3: ^2.0.2
   form_field_validator: ^1.1.0
   timeago: ^3.7.0
   fancy_bottom_navigation: ^0.3.3
