@@ -244,7 +244,7 @@ class ScannedBarcodeLabel extends StatelessWidget {
 
         if (scannedBarcodes.isEmpty) {
           return const Text(
-            'Scan something!',
+            '',
             overflow: TextOverflow.fade,
             style: TextStyle(color: Colors.white),
           );

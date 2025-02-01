@@ -39,7 +39,7 @@ class _BinDetailsState extends State<BinDetails> {
     ).then(
       (Response<dynamic> response) async {
         setState(() {
-          widget.binObject.currentLevel = response.data['bin_level'];
+          widget.binObject.currentLevel = response.data['current_level'];
           binValue = _levelCalculator();
         });
         _refreshController.refreshCompleted();
@@ -308,32 +308,7 @@ class _BinDetailsState extends State<BinDetails> {
 
   // Function to translate the bin level to display in the app
   _levelCalculator() {
-    int level = int.parse("${widget.binObject.currentLevel}");
-    return level/100.0;
-
-    // if (i >= 48) {
-    //   return 1.0;
-    // } else if (i >= 45) {
-    //   return 0.9;
-    // } else if (i >= 40) {
-    //   return 0.8;
-    // } else if (i >= 35) {
-    //   return 0.7;
-    // } else if (i >= 30) {
-    //   return 0.6;
-    // } else if (i >= 25) {
-    //   return 0.5;
-    // } else if (i >= 20) {
-    //   return 0.4;
-    // } else if (i >= 15) {
-    //   return 0.3;
-    // } else if (i >= 10) {
-    //   return 0.2;
-    // } else if (i >= 5) {
-    //   return 0.1;
-    // } else {
-    //   return 0.0;
-    // }
+    return int.parse("${widget.binObject.currentLevel}") / 100;
   }
 
   _weightConvertor(double weight) {

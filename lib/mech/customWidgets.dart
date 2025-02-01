@@ -365,26 +365,26 @@ class BinCard2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: screenHeight(context, dividedBy: 9.0),
-        width: screenWidth(context, dividedBy: 1.2),
-        margin: EdgeInsets.only(left: 30, bottom: 25, right: 30),
+        height: 100,
+        margin: EdgeInsets.only(top: 10, bottom: 10),
         child: Ink(
           decoration: BoxDecoration(
               color: Colors.white,
               // gradient: LinearGradient(colors: [gStart, gEnd]),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
                     offset: Offset(0, 10),
-                    blurRadius: 13,
+                    blurRadius: 1,
                     color: cardShadow.withOpacity(0.06)),
-              ]),
+              ]
+          ),
           child: InkWell(
             splashColor: Colors.grey[200],
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
             onTap: () {routTo();},
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
@@ -402,7 +402,7 @@ class BinCard2 extends StatelessWidget {
                                         style: TextStyle(
                                             color: fDark, fontSize: 17),
                                         children: [
-                                          TextSpan(text: "Nickname: "),
+                                          TextSpan(text: "Name: "),
                                           TextSpan(
                                               text: nickName,
                                               style: TextStyle(

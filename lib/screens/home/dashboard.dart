@@ -57,8 +57,17 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 30.0),
+      appBar: AppBar(
+        title: const Text(
+          "AutoBin",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
         child: Container(
           color: Color.fromARGB(1, 245, 236, 236),
           width: double.infinity,
@@ -67,19 +76,16 @@ class _DashBoardState extends State<DashBoard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 25, left: 30),
-                child: RichText(
-                    text: TextSpan(
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                            color: fHeader),
-                        children: [
-                      TextSpan(text: "Hello "),
-                      TextSpan(text: fName)
-                    ])),
-              ),
+              RichText(
+                  text: TextSpan(
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          color: fHeader),
+                      children: [
+                    TextSpan(text: "Hello "),
+                    TextSpan(text: fName)
+                  ])),
               SizedBox(height: 13),
               Center(
                 child: OverViewCard(
@@ -91,22 +97,19 @@ class _DashBoardState extends State<DashBoard> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 30, bottom: 0),
-                    child: Text("Bins Owned",
-                        style: TextStyle(
-                            fontSize: 21,
-                            fontWeight: FontWeight.w600,
-                            color: fHeader)),
-                  ),
-                  TextButton(
+                  Text("My Bins",
+                      style: TextStyle(
+                          fontSize: 21,
+                          fontWeight: FontWeight.w600,
+                          color: fHeader)),
+                  OutlinedButton(
                     child: Text("Add Bin"),
                     onPressed: () => { _addBin() },
                   ),
                 ],
               ),
 
-              _binListBuilder()
+              _binListBuilder(),
             ],
           ),
         ),
@@ -114,27 +117,58 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 
-  _binListBuilder() {
-    return Expanded(
-      child: _isProcessing
-          ? Center(
-              child: loadingSpinner2,
-            )
-          : _bins.length > 0
-              ? ListView.builder(
-                  itemCount: _bins.length,
-                  itemBuilder: (context, position) {
-                    return _binBuilder(_bins[position]);
-                  })
-              : Center(
-                  child: Text("There are no bins to display",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.black26,
-                      )),
-                ),
+  Widget _binListBuilder() {
+    if (_isProcessing) {
+      return Padding(
+        padding: EdgeInsets.only(top: 50),
+        child: Center(
+          child: loadingSpinner2,
+        ),
+      );
+    }
+    if (_bins.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 100),
+            Icon(Icons.delete_outline, size: 80, color: Colors.black26),
+            SizedBox(height: 20),
+            Text(
+              "There are no bins to display",
+              style: TextStyle(fontSize: 20.0, color: Colors.black54),
+            ),
+          ],
+        ),
+      );
+    }
+    return Flexible(
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: _bins.length,
+        itemBuilder: (context, position) {
+          return _binBuilder(_bins[position]);
+        },
+      ),
     );
   }
+
+  // Widget _binBuilder2(Bin bin) {
+  //   return Card(
+  //     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+  //     borderOnForeground: true,
+  //     child: ListTile(
+  //       leading: Image.asset('assets/images/Garbage Truck_24px.png'),
+  //       title: Text(bin.nickName),
+  //       subtitle: Text("Status: ${bin.serialNumber}"),
+  //       trailing: Icon(Icons.arrow_forward),
+  //       onTap: () {
+  //         print("Tapped on bin: ${bin.nickName}");
+  //       },
+  //     ),
+  //   );
+  // }
 
   _binBuilder(Bin bin) {
     return BinCard2(
