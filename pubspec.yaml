@@ -43,6 +43,7 @@ dependencies:
   timeago: ^3.7.0
   fancy_bottom_navigation: ^0.3.3
   liquid_progress_indicator_v2: ^0.5.0
+  carousel_slider: ^5.0.0
   mobile_scanner: ^6.0.2
   image_picker: ^1.0.4
   shared_preferences: ^2.2.3

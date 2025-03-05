@@ -36,7 +36,7 @@ class APIController {
   static errorMessage(DioException e, BuildContext context) {
     print(e.response?.data);
     String message = e.response != null
-        ? e.response?.data
+        ? e.response?.data['detail']
         : "No connectivity. Please check your internet connection and try again.";
     int statusCode = e.response != null ? 0 : 0;
 
@@ -93,9 +93,9 @@ class APIController {
 
   // retrieve owner's bins
   // @return Response
-  Future<Response<dynamic>> ownerBins() async {
+  Future<Response<dynamic>> home() async {
     await _setTokenHeaderAndUserId();
-    return await _dio.get("$_url/bins/");
+    return await _dio.get("$_url/home/");
     // return await _dio.get("$_url/bins/", options: _options);
   }
 
@@ -127,5 +127,9 @@ class APIController {
     return await _dio.post("$_url/bin/detail/", data: {
       'bin_id': binId,
     });
+  }
+
+  Future<Response<dynamic>> getPickups() async {
+    return await _dio.get("$_url/user/pickups/");
   }
 }
