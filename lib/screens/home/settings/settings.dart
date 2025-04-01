@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:autobin/controllers/pref_controller.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/mech/customWidgets.dart';
-import 'package:autobin/mech/screensize.dart';
+import 'package:autobin/data/services/pref_controller.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/widgets/customWidgets.dart';
+import 'package:autobin/utils/screensize.dart';
 import 'package:autobin/screens/auth/login.dart';
 
 class Settings extends StatefulWidget {
+  const Settings({super.key});
+
   @override
   State<Settings> createState() => _SettingsState();
 }
@@ -16,6 +18,9 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+      ),
       body: SafeArea(
         child: Container(
           color: Colors.grey.withOpacity(.05),

@@ -1,12 +1,11 @@
-import 'package:autobin/mech/customWidgets.dart';
+import 'package:autobin/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/screens/home/add_bin/pick_bin_location.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/screens/home/dashboard/add_bin/pick_bin_location.dart';
 
 
 class AddBin extends StatefulWidget {
   final String qrValue;
-
 
   const AddBin({super.key, required this.qrValue});
 

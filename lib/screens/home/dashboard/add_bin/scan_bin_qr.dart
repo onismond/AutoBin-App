@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:autobin/screens/home/add_bin/add_bin.dart';
-import 'package:autobin/mech/barcode_scanner_widgets.dart';
+import 'package:autobin/screens/home/dashboard/add_bin/add_bin.dart';
+import 'package:autobin/widgets/barcode_scanner_widgets.dart';
 
 
 class ScanBinQR extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/mech/customWidgets.dart';
-import 'package:autobin/mech/drawings.dart';
-import 'package:autobin/mech/screensize.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/widgets/customWidgets.dart';
+import 'package:autobin/utils/drawings.dart';
+import 'package:autobin/utils/screensize.dart';
 
 class PhoneVerification extends StatelessWidget {
   @override

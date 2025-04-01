@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:autobin/mech/screensize.dart';
+import 'package:autobin/utils/screensize.dart';
 // import 'package:autobin/screens/home/home-shell.dart';
-import 'constants.dart';
+import '../utils/constants.dart';
 
 // Textbox
 final customInput = InputDecoration(

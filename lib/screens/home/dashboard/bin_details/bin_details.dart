@@ -2,11 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-import 'package:autobin/controllers/api_controller.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/mech/customWidgets.dart';
-import 'package:autobin/mech/screensize.dart';
-import 'package:autobin/models/bin_model.dart';
+import 'package:autobin/data/services/api_controller.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/widgets/customWidgets.dart';
+import 'package:autobin/utils/screensize.dart';
+import 'package:autobin/data/models/bin_model.dart';
 
 class BinDetails extends StatefulWidget {
   final Bin binObject;

@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:autobin/controllers/api_controller.dart';
-// import 'package:zuba/controllers/pref_controller.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/mech/customWidgets.dart';
-import 'package:autobin/mech/drawings.dart';
-import 'package:autobin/mech/input_validations.dart';
-import 'package:autobin/mech/screensize.dart';
+import 'package:autobin/data/services/api_controller.dart';
+import 'package:autobin/data/services/pref_controller.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/widgets/customWidgets.dart';
+import 'package:autobin/utils/drawings.dart';
+import 'package:autobin/utils/input_validations.dart';
+import 'package:autobin/utils/screensize.dart';
 import 'package:flutter/gestures.dart';
 import 'package:autobin/screens/auth/signup.dart';
-import 'package:autobin/screens/home/home-shell.dart';
+import 'package:autobin/screens/home/home_shell.dart';
 
 class Login extends StatefulWidget {
   @override

@@ -8,7 +8,7 @@ class APIController {
   late Options _options;
 
   // api url
-  final String _url = "https://autobin-ucc-40b2bf6f03bc.herokuapp.com/api/v1";
+  final String _url = "http://16.171.27.117/api/v1";
 
   // id of the logged in user
   late int _userId;
@@ -36,7 +36,7 @@ class APIController {
   static errorMessage(DioException e, BuildContext context) {
     print(e.response?.data);
     String message = e.response != null
-        ? e.response?.data['detail']
+        ? e.response?.data['error']
         : "No connectivity. Please check your internet connection and try again.";
     int statusCode = e.response != null ? 0 : 0;
 
@@ -131,5 +131,13 @@ class APIController {
 
   Future<Response<dynamic>> getPickups() async {
     return await _dio.get("$_url/user/pickups/");
+  }
+
+  Future<Response<dynamic>> getTransactions() async {
+    return await _dio.get("$_url/user/transactions/");
+  }
+
+  Future<Response<dynamic>> payNow() async {
+    return await _dio.get("$_url/user/transactions/pay-now/");
   }
 }

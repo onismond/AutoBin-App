@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:autobin/screens/home/dashboard.dart';
+import 'package:autobin/screens/home/dashboard/dashboard.dart';
 
 class AddBinSuccess extends StatelessWidget {
   const AddBinSuccess({super.key});

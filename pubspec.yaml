@@ -48,6 +48,7 @@ dependencies:
   image_picker: ^1.0.4
   shared_preferences: ^2.2.3
   google_maps_flutter: ^2.10.0
+  webview_flutter: ^4.10.0
 
 
 dev_dependencies:

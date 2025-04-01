@@ -1,18 +1,20 @@
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/screens/home/dashboard.dart';
-import 'package:autobin/screens/home/pickups.dart';
-import 'package:autobin/screens/home/settings.dart';
-import 'package:autobin/screens/home/user-profile.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/screens/home/dashboard/dashboard.dart';
+import 'package:autobin/screens/home/pickups/pickups.dart';
+import 'package:autobin/screens/home/transactions/transactions.dart';
+import 'package:autobin/screens/home/settings/settings.dart';
 
 class HomeShell extends StatefulWidget {
+  const HomeShell({super.key});
+
   @override
-  _HomeShellState createState() => _HomeShellState();
+  State<HomeShell> createState() => _HomeShellState();
 }
 
 class _HomeShellState extends State<HomeShell> {
-  GlobalKey _fancyBottomNavigatorKey = GlobalKey();
+  final GlobalKey _fancyBottomNavigatorKey = GlobalKey();
   int _currentPageIndex = 0;
 
   @override
@@ -22,10 +24,10 @@ class _HomeShellState extends State<HomeShell> {
       bottomNavigationBar: FancyBottomNavigation(
         initialSelection: _currentPageIndex,
         tabs: [
-          TabData(iconData: Icons.home, title: "Home"),
-          TabData(iconData: Icons.person_outline, title: "Profile"),
-          TabData(iconData: Icons.drive_eta, title: "Pickups"),
-          TabData(iconData: Icons.settings, title: "Settings"),
+          TabData(iconData: Icons.home_rounded, title: "Home"),
+          TabData(iconData: Icons.drive_eta_rounded, title: "Pickups"),
+          TabData(iconData: Icons.payment_rounded, title: "Transactions"),
+          TabData(iconData: Icons.settings_rounded, title: "Settings"),
         ],
         onTabChangedListener: (position) {
           setState(() {
@@ -43,16 +45,12 @@ class _HomeShellState extends State<HomeShell> {
     switch (pageNumber) {
       case 0:
         return DashBoard();
-        break;
       case 1:
-        return UserProfile();
-        break;
-      case 2:
         return Pickups();
-        break;
+      case 2:
+        return Transactions();
       case 3:
         return Settings();
-        break;
     }
     return DashBoard();
   }

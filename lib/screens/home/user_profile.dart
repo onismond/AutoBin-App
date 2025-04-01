@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:autobin/controllers/pref_controller.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/mech/customWidgets.dart';
-import 'package:autobin/mech/input_validations.dart';
-import 'package:autobin/mech/screensize.dart';
+import 'package:autobin/data/services/pref_controller.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/widgets/customWidgets.dart';
+import 'package:autobin/utils/input_validations.dart';
+import 'package:autobin/utils/screensize.dart';
 
 class UserProfile extends StatefulWidget {
   @override

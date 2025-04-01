@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:autobin/mech/constants.dart';
-import 'package:autobin/controllers/api_controller.dart';
-import 'package:autobin/screens/home/add_bin/add_bin_success.dart';
+import 'package:autobin/utils/constants.dart';
+import 'package:autobin/data/services/api_controller.dart';
+import 'package:autobin/screens/home/dashboard/add_bin/add_bin_success.dart';
 
 
 class PickBinLocation extends StatefulWidget {
