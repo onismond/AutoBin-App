@@ -267,7 +267,7 @@ class _DashBoardState extends State<DashBoard> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PaymentDetails()
+                                builder: (context) => PaymentDetails(amount: "25.00")
                             )
                         );
                       },

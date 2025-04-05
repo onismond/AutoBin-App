@@ -17,12 +17,42 @@ class _WebPaymentState extends State<WebPayment> {
 
   @override
   void initState() {
-    data = widget.data;
     super.initState();
-    print(_getHtmlForPostRequest());
+    data = widget.data;
+
+    // Initialize WebViewController properly
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadHtmlString(_getHtmlForPostRequest());
+      ..setBackgroundColor(const Color(0x00000000)) // Optional: Transparent background
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            debugPrint("Loading progress: $progress%");
+          },
+          onPageStarted: (String url) {
+            debugPrint("Page started loading: $url");
+          },
+          onPageFinished: (String url) {
+            debugPrint("Page finished loading: $url");
+          },
+          onWebResourceError: (WebResourceError error) {
+            debugPrint("Error: ${error.description}");
+          },
+        ),
+      );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final htmlString = _getHtmlForPostRequest();
+      debugPrint("Generated HTML: $htmlString");
+      await _controller.loadHtmlString(htmlString);
+      // await _controller.loadRequest(Uri.parse('https://flutter.dev'));
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.clearCache();
+    super.dispose();
   }
 
   String _getHtmlForPostRequest() {
@@ -34,6 +64,7 @@ class _WebPaymentState extends State<WebPayment> {
           <input type="hidden" name="x-nonce" value="${data!['x-nonce']}">
           <input type="hidden" name="x-timestamp" value="${data!['x-timestamp']}">
           <input type="hidden" name="x-signature" value="${data!['x-signature']}">
+          <input type="hidden" name="amount" value="${data!['amount']}">
           <input type="hidden" name="firstName" value="${data!['firstName']}">
           <input type="hidden" name="lastName" value="${data!['lastName']}">
           <input type="hidden" name="email" value="${data!['email']}">
