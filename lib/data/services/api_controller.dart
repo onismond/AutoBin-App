@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-// import 'package:zuba/controllers/pref_controller.dart';
+import 'package:autobin/data/services/pref_controller.dart';
 import 'package:autobin/screens/auth/login.dart';
 
 class APIController {
@@ -8,7 +8,7 @@ class APIController {
   late Options _options;
 
   // api url
-  final String _url = "http://16.171.27.117/api/v1";
+  final String _url = "http://13.53.168.208/api/v1";
 
   // id of the logged in user
   late int _userId;
@@ -34,7 +34,7 @@ class APIController {
 
   // decodes data using methods above and returns the message column for success or error responses from the api
   static errorMessage(DioException e, BuildContext context) {
-    print(e.response?.data);
+    // print(e.response?.data);
     String message = e.response != null
         ? e.response?.data['error']
         : "No connectivity. Please check your internet connection and try again.";
@@ -54,10 +54,8 @@ class APIController {
 
   // retrieve token and user id
   _setTokenHeaderAndUserId() async {
-    // String token = await PrefController.getToken();
-    // _userId = await PrefController.getId();
-    String token = "";
-    _userId = 1;
+    String token = await PrefController.getToken();
+    _userId = await PrefController.getId();
     // assign token
     _options = Options(headers: {"Authorization": "Bearer $token"});
   }
@@ -91,12 +89,9 @@ class APIController {
     });
   }
 
-  // retrieve owner's bins
-  // @return Response
   Future<Response<dynamic>> home() async {
     await _setTokenHeaderAndUserId();
-    return await _dio.get("$_url/home/");
-    // return await _dio.get("$_url/bins/", options: _options);
+    return await _dio.get("$_url/home/", options: _options);
   }
 
   // manual request for pick up

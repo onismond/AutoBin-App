@@ -65,7 +65,7 @@ class _PaymentDetailsState extends State<PaymentDetails> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 400.0),
+                margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 200.0),
                 child: Row(
                   children: [
                     Text(

@@ -34,6 +34,8 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: bColor1,
       body: SafeArea(
+        top: true,
+        bottom: false,
         child: Stack(children: <Widget>[
           SingleChildScrollView(
             child: Container(
@@ -183,8 +185,6 @@ class _LoginState extends State<Login> {
             ),
           )
         ]),
-        top: true,
-        bottom: false,
       ),
     );
   }
@@ -210,8 +210,7 @@ class _LoginState extends State<Login> {
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Submits data to api
-  void _submitDataToApi(
-      BuildContext context, String email, String password) async {
+  void _submitDataToApi(BuildContext context, String email, String password) async {
     // if a login process is already ongoing, exit
     if (_isProcessing) return;
 
@@ -222,10 +221,10 @@ class _LoginState extends State<Login> {
     await APIController().login(email: email, password: password).then(
         (Response<dynamic> response) async {
       // Decode the data
-      Map<String, dynamic> data = APIController.decodeMapData(response);
-
+      Map<String, dynamic> data = response.data;
+      debugPrint(data.toString());
       // Save details to device
-      // await PrefController.saveUserDetails(data);
+      await PrefController.saveUserDetails(data);
 
       setState(() {
         _isProcessing = false;

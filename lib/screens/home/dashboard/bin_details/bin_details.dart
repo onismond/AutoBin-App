@@ -5,6 +5,7 @@ import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:autobin/data/services/api_controller.dart';
 import 'package:autobin/utils/constants.dart';
 import 'package:autobin/widgets/customWidgets.dart';
+import 'package:autobin/widgets/waste_bin.dart';
 import 'package:autobin/utils/screensize.dart';
 import 'package:autobin/data/models/bin_model.dart';
 
@@ -199,66 +200,71 @@ class _BinDetailsState extends State<BinDetails> {
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500))
                                         ])),
-                                    RichText(
-                                        text: TextSpan(
-                                            style: TextStyle(
-                                                color: fDark, fontSize: 16),
-                                            children: [
-                                          TextSpan(text: "Smoke notification: "),
-                                          TextSpan(
-                                              text:
-                                                  '${widget.binObject.smokeNotification}',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w500))
-                                        ])),
+                                    // RichText(
+                                    //     text: TextSpan(
+                                    //         style: TextStyle(
+                                    //             color: fDark, fontSize: 16),
+                                    //         children: [
+                                    //       TextSpan(text: "Smoke notification: "),
+                                    //       TextSpan(
+                                    //           text:
+                                    //               '${widget.binObject.smokeNotification}',
+                                    //           style: TextStyle(
+                                    //               fontWeight: FontWeight.w500))
+                                    //     ])),
                                   ]),
                             )
                           ]),
                         ),
                         SizedBox(height: 30.0),
                         // bin quantity section
-                        Container(
-                          width: screenWidth(context, dividedBy: 1.2),
-                          height: screenHeight(context, dividedBy: 2.6),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Center(
-                              child: Padding(
-                            padding: const EdgeInsets.all(30.0),
-                            child: Stack(children: <Widget>[
-                              LiquidCircularProgressIndicator(
-                                value: binValue, // Defaults to 0.5.
-                                valueColor: AlwaysStoppedAnimation(gStart.withOpacity(
-                                    binValue)), // Defaults to the current Theme's accentColor.
-                                backgroundColor: Colors.grey.withOpacity(
-                                    .05), // Defaults to the current Theme's backgroundColor.
-                                borderColor: Colors.grey,
-                                borderWidth: 0.30,
-                                direction: Axis
-                                    .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                              ),
-                              LiquidCircularProgressIndicator(
-                                value: binValue - .01, // Defaults to 0.5.
-                                valueColor: AlwaysStoppedAnimation(Colors.white
-                                    .withOpacity(
-                                        .3)), // Defaults to the current Theme's accentColor.
-                                backgroundColor: Colors
-                                    .transparent, // Defaults to the current Theme's backgroundColor.
-                                borderColor: Colors.transparent,
-                                borderWidth: 0.30,
-                                direction: Axis
-                                    .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                                center: Text(
-                                    '${((binValue * 100).toInt()).toString()}%',
-                                    style: TextStyle(
-                                        fontSize: 50,
-                                        color: Colors.black.withOpacity(0.90))),
-                              ),
-                            ]),
-                          )),
+                        WasteBinWidget(
+                          fillLevel: binValue, // 65% filled
+                          width: 160,
+                          height: 250,
                         ),
+                        // Container(
+                        //   width: screenWidth(context, dividedBy: 1.2),
+                        //   height: screenHeight(context, dividedBy: 2.6),
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.white,
+                        //     borderRadius: BorderRadius.circular(20),
+                        //   ),
+                        //   child: Center(
+                        //       child: Padding(
+                        //     padding: const EdgeInsets.all(30.0),
+                        //     child: Stack(children: <Widget>[
+                        //       LiquidCircularProgressIndicator(
+                        //         value: binValue, // Defaults to 0.5.
+                        //         valueColor: AlwaysStoppedAnimation(gStart.withOpacity(
+                        //             binValue)), // Defaults to the current Theme's accentColor.
+                        //         backgroundColor: Colors.grey.withOpacity(
+                        //             .05), // Defaults to the current Theme's backgroundColor.
+                        //         borderColor: Colors.grey,
+                        //         borderWidth: 0.30,
+                        //         direction: Axis
+                        //             .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                        //       ),
+                        //       LiquidCircularProgressIndicator(
+                        //         value: binValue - .01, // Defaults to 0.5.
+                        //         valueColor: AlwaysStoppedAnimation(Colors.white
+                        //             .withOpacity(
+                        //                 .3)), // Defaults to the current Theme's accentColor.
+                        //         backgroundColor: Colors
+                        //             .transparent, // Defaults to the current Theme's backgroundColor.
+                        //         borderColor: Colors.transparent,
+                        //         borderWidth: 0.30,
+                        //         direction: Axis
+                        //             .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                        //         center: Text(
+                        //             '${((binValue * 100).toInt()).toString()}%',
+                        //             style: TextStyle(
+                        //                 fontSize: 50,
+                        //                 color: Colors.black.withOpacity(0.90))),
+                        //       ),
+                        //     ]),
+                        //   )),
+                        // ),
                         SizedBox(height: 25.0),
                         CustomButton(
                             width: screenWidth(context, dividedBy: 1.211),

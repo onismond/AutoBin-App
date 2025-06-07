@@ -27,8 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   //automatically logs user in if the token exists
   _autoLogUserIn() async {
-    // String token = await PrefController.getToken();
-    String token = "1";
+    String token = await PrefController.getToken();
     if (token.isNotEmpty) {
       // show status bar
 //      SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
